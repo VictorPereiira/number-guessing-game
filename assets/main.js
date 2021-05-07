@@ -23,9 +23,12 @@ function checkGuess() {
         lastResult.textContent = 'Congratulations! You got it right!';
         lastResult.style.backgroundColor = 'green';
         lowOrHi.textContent = '';
+        gameOver();
     } else if (guessCount === 3) {
         lastResult.textContent = 'GAME OVER!!!';
+        lastResult.style.backgroundColor = 'black';
         lowOrHi.textContent = '';
+        gameOver();
     } else {
         lastResult.textContent = 'Wrong!';
         lastResult.style.backgroundColor = 'red';
@@ -43,3 +46,16 @@ function checkGuess() {
 }
 
 guessSubmit.addEventListener('click', checkGuess);
+
+function gameOver() {
+    guessField.disabled = true;
+    guessSubmit.disabled = true;
+    resetButton = document.createElement('button');
+    resetButton.textContent = 'Start new game';
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener('click', resetGame)
+}
+
+function resetGame() {
+    alert('Ready for the next match?');
+}
