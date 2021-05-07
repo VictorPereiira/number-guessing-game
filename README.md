@@ -2,8 +2,8 @@
 # Number Guessing Game
 > 🛠 Project in building...
 
-- Start Date ->  May 6, 2021
-- End Date -> 
+- Start Date: May 6, 2021
+- End Date: in definition
 
 ## Progress
 
