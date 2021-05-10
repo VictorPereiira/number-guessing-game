@@ -9,13 +9,20 @@ const guessSubmit = document.querySelector(".guessSubmit");
 const guessField = document.querySelector(".guessField");
 
 let guessCount = 2;
-let userGuess = [];
 let numberGuess = 1;
+let userGuess = [];
 let resetButton;
 
 function checkGuess() {
     userGuess.push(Number(guessField.value));
-    let firstGuess = userGuess[userGuess.length - numberGuess];
+    userGuessSorted = userGuess.slice().sort();
+
+    for (let i = 0; i < userGuessSorted.length - 1; i++) {
+        if (userGuessSorted[i + 1] == userGuessSorted[i]) {
+            var repeat = true;
+        }
+    }
+
     let lastGuess = userGuess[userGuess.length - 1];
     console.log(userGuess);
 
@@ -28,7 +35,7 @@ function checkGuess() {
     turn.textContent = 'Turn: ' + guessCount;
 
     if ((lastGuess >= 1) && (lastGuess <= 100)) {
-        if ((guessCount <= 1) && (firstGuess === lastGuess)) {
+        if ((guessCount <= 1) && (repeat)) {
             guesses.textContent = '';
             turn.textContent = '';
             lastResult.textContent = 'The value must be different from the previous one.';
