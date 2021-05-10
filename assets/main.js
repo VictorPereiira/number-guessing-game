@@ -1,12 +1,14 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 console.log(randomNumber);
 
-var guesses = document.querySelector(".guesses");
-var lastResult = document.querySelector(".lastResult");
-var lowOrHi = document.querySelector(".lowOrHi");
 
-var guessSubmit = document.querySelector(".guessSubmit");
-var guessField = document.querySelector(".guessField");
+const guesses = document.querySelector(".guesses");
+const lastResult = document.querySelector(".lastResult");
+const lowOrHi = document.querySelector(".lowOrHi");
+
+const guessSubmit = document.querySelector(".guessSubmit");
+const guessField = document.querySelector(".guessField");
+console.log(guessField.value);
 
 let guessCount = 1;
 let resetButton;
@@ -15,6 +17,7 @@ function checkGuess() {
     let userGuess = Number(guessField.value);
     if (guessCount === 1) {
         guesses.textContent = 'Previus guess: ';
+        guessField.placeholder = '';
     }
 
     guesses.textContent += userGuess + ' ';
@@ -56,6 +59,18 @@ function gameOver() {
     resetButton.addEventListener('click', resetGame)
 }
 
+
 function resetGame() {
-    alert('Ready for the next match?');
+    guessCount = 1;
+    guessField.placeholder = 'Exp: 63';
+    guesses.textContent = '';
+    lastResult.textContent = '';
+
+    resetButton.parentNode.removeChild(resetButton);
+    guessField.disabled = false;
+    guessSubmit.disabled = false;
+    guessField.value = '';
+    guessField.focus();
+    lastResult.style.backgroundColor = 'white';
+    randomNumber = Math.floor(Math.random() * 100) + 1;
 }

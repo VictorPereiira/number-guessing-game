@@ -3,7 +3,7 @@
 > 🛠 Project in building...
 
 - Start Date: May 6, 2021
-- End Date: in definition
+- Beta Date: in definition
 
 ## Progress
 
@@ -22,6 +22,7 @@
         <li title="App core idea">randomNumber</li>
         <li title="Arrives the user's guess">checkGuess</li>
         <li title="Disable fields and run resetGame">gameOver</li>
+        <li title="Start new game">resetGame</li>
     </ol>
 </details>
 

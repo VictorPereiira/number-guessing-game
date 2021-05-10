@@ -5,22 +5,25 @@
 }
 
 
-body {
+html {
     display: flex;
     justify-content: center;
     align-items: center; 
     height: 100vh;   
 }
 
-main {
-    border: 2px solid red;
+body {
+    /* border: 2px solid red; */
     width: 50%;
     max-width: 800px;
     min-width: 480px;
     text-align: center;
 }
 
-main > p, form {
+body > p, form {
     margin: 20px 0;
 }
 
+.lastResult {
+    color: #fff;
+}
