@@ -34,6 +34,7 @@
     <input type="checkbox"></input>Feat: Inverse guessCont view and control 
     <input type="checkbox"></input>Bug: number interval limited ( 1 -100 ) 
     <input type="checkbox"></input>Bug: not repeat number
+    <input type="checkbox"></input>Feat: Create button "Start"
     <input type="checkbox"></input>Feat: Create button "Continue"
     <input type="checkbox"></input>Html reposition elements
     <input type="checkbox"></input>Style css

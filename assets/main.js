@@ -1,7 +1,7 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 const guesses = document.querySelector(".guesses");
-const guessCountView = document.querySelector(".guessCount")
+const turn = document.querySelector(".guessCount")
 const lastResult = document.querySelector(".lastResult");
 const lowOrHi = document.querySelector(".lowOrHi");
 
@@ -9,28 +9,33 @@ const guessSubmit = document.querySelector(".guessSubmit");
 const guessField = document.querySelector(".guessField");
 
 let guessCount = 2;
+let userGuess = [];
+let numberGuess = 1;
 let resetButton;
 
 function checkGuess() {
-    let userGuess = Number(guessField.value);
+    userGuess.push(Number(guessField.value));
+    let firstGuess = userGuess[userGuess.length - numberGuess];
+    let lastGuess = userGuess[userGuess.length - 1];
+    console.log(userGuess);
 
     if (guessCount === 2) {
         guessField.placeholder = '';
-        guesses.textContent = 'Previus guess: ';
+        guesses.textContent = 'Previous Guess: ';
     }
 
-    guesses.textContent += userGuess + ' ';
-    guessCountView.textContent = 'Guess Count: ' + guessCount;
+    guesses.textContent += lastGuess + ' ';
+    turn.textContent = 'Turn: ' + guessCount;
 
-    if (userGuess === 0) {
-        guesses.textContent = '';
-        guessCountView.textContent = '';
-        lastResult.textContent = 'The value entered must be between: 1 and 100.';
-        lastResult.style.backgroundColor = 'black';
-        lowOrHi.textContent = '';
-        gameOver();
-    } else {
-        if (userGuess === randomNumber) {
+    if ((lastGuess >= 1) && (lastGuess <= 100)) {
+        if ((guessCount <= 1) && (firstGuess === lastGuess)) {
+            guesses.textContent = '';
+            turn.textContent = '';
+            lastResult.textContent = 'The value must be different from the previous one.';
+            lastResult.style.backgroundColor = 'black';
+            lowOrHi.textContent = '';
+            gameOver();
+        } else if (userGuess === randomNumber) {
             lastResult.textContent = 'Congratulations! You got it right!';
             lastResult.style.backgroundColor = 'green';
             lowOrHi.textContent = '';
@@ -52,8 +57,16 @@ function checkGuess() {
         }
 
         guessCount--;
+        numberGuess++;
         guessField.value = '';
         guessField.focus();
+    } else {
+        guesses.textContent = '';
+        turn.textContent = '';
+        lastResult.textContent = 'The value entered must be between: 1 and 100.';
+        lastResult.style.backgroundColor = 'black';
+        lowOrHi.textContent = '';
+        gameOver();
     }
 }
 
@@ -70,9 +83,11 @@ function gameOver() {
 
 function resetGame() {
     guessCount = 2;
+    numberGuess = 1;
+    userGuess.splice(0, Number.MAX_VALUE);
     guessField.placeholder = 'Exp: 37';
     guesses.textContent = '';
-    guessCountView.textContent = '';
+    turn.textContent = '';
     lastResult.textContent = '';
 
     resetButton.parentNode.removeChild(resetButton);
