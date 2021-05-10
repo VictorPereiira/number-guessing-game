@@ -1,6 +1,4 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
-console.log(randomNumber);
-
 
 const guesses = document.querySelector(".guesses");
 const lastResult = document.querySelector(".lastResult");
@@ -8,7 +6,6 @@ const lowOrHi = document.querySelector(".lowOrHi");
 
 const guessSubmit = document.querySelector(".guessSubmit");
 const guessField = document.querySelector(".guessField");
-console.log(guessField.value);
 
 let guessCount = 1;
 let resetButton;
@@ -22,30 +19,37 @@ function checkGuess() {
 
     guesses.textContent += userGuess + ' ';
 
-    if (userGuess === randomNumber) {
-        lastResult.textContent = 'Congratulations! You got it right!';
-        lastResult.style.backgroundColor = 'green';
-        lowOrHi.textContent = '';
-        gameOver();
-    } else if (guessCount === 3) {
-        lastResult.textContent = 'GAME OVER!!!';
+    if (userGuess === 0) {
+        lastResult.textContent = 'The value entered must be between: 1 and 100.';
         lastResult.style.backgroundColor = 'black';
         lowOrHi.textContent = '';
         gameOver();
     } else {
-        lastResult.textContent = 'Wrong!';
-        lastResult.style.backgroundColor = 'red';
-        if (userGuess > randomNumber) {
-            lowOrHi.textContent = 'Last guess was too high!';
+        if (userGuess === randomNumber) {
+            lastResult.textContent = 'Congratulations! You got it right!';
+            lastResult.style.backgroundColor = 'green';
+            lowOrHi.textContent = '';
+            gameOver();
+        } else if (guessCount === 3) {
+            lastResult.textContent = 'GAME OVER!!!';
+            lastResult.style.backgroundColor = 'black';
+            lowOrHi.textContent = '';
+            gameOver();
+        } else {
+            lastResult.textContent = 'Wrong!';
+            lastResult.style.backgroundColor = 'red';
+            if (userGuess > randomNumber) {
+                lowOrHi.textContent = 'Last guess was too high!';
+            }
+            if (userGuess < randomNumber) {
+                lowOrHi.textContent = 'Last guess was too low!';
+            }
         }
-        if (userGuess < randomNumber) {
-            lowOrHi.textContent = 'Last guess was too low!';
-        }
-    }
 
-    guessCount++;
-    guessField.value = '';
-    guessField.focus();
+        guessCount++;
+        guessField.value = '';
+        guessField.focus();
+    }
 }
 
 guessSubmit.addEventListener('click', checkGuess);
@@ -58,7 +62,6 @@ function gameOver() {
     document.body.appendChild(resetButton);
     resetButton.addEventListener('click', resetGame)
 }
-
 
 function resetGame() {
     guessCount = 1;
@@ -73,4 +76,5 @@ function resetGame() {
     guessField.focus();
     lastResult.style.backgroundColor = 'white';
     randomNumber = Math.floor(Math.random() * 100) + 1;
+    console.log(randomNumber);
 }
