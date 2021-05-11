@@ -27,3 +27,7 @@ body > p, form {
 .lastResult {
     color: #fff;
 }
+
+.form{
+    display: none;
+}

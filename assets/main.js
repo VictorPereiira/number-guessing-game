@@ -5,13 +5,22 @@ const turn = document.querySelector(".guessCount")
 const lastResult = document.querySelector(".lastResult");
 const lowOrHi = document.querySelector(".lowOrHi");
 
-const guessSubmit = document.querySelector(".guessSubmit");
+const form = document.querySelector(".form");
 const guessField = document.querySelector(".guessField");
+const guessSubmit = document.querySelector(".guessSubmit");
+
+const startButton = document.querySelector(".startButton");
 
 let guessCount = 2;
-let numberGuess = 1;
 let userGuess = [];
 let resetButton;
+
+function startGame() {
+    startButton.parentNode.removeChild(startButton);
+    form.style.display = 'block';
+}
+
+startButton.addEventListener('click', startGame)
 
 function checkGuess() {
     userGuess.push(Number(guessField.value));
@@ -64,7 +73,6 @@ function checkGuess() {
         }
 
         guessCount--;
-        numberGuess++;
         guessField.value = '';
         guessField.focus();
     } else {
@@ -90,7 +98,6 @@ function gameOver() {
 
 function resetGame() {
     guessCount = 2;
-    numberGuess = 1;
     userGuess.splice(0, Number.MAX_VALUE);
     guessField.placeholder = 'Exp: 37';
     guesses.textContent = '';
