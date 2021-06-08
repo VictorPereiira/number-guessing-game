@@ -6,15 +6,12 @@
 
 ## Progress
 
-<details>
-    <summary>Start Project</summary>
-      | ID  | Name                     | Description                         |
-      | --- | ------------------------ | ----------------------------------- |
-      | 1   | Start interface project  | HTML structure and Basic styles css |
-      | 2   | Declaration of variables | App data storage                    |
-
-
-</details>
+- Start Project
+  
+    | ID  | Name                     | Description                         |
+    | --- | ------------------------ | ----------------------------------- |
+    | 1   | Start interface project  | HTML structure and Basic styles css |
+    | 2   | Declaration of variables | App data storage                    |
 
 - Features
 
