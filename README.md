@@ -2,29 +2,27 @@
 # Number Guessing Game
 > 🛠 Project in building...
 
-- Start Date: May 6, 2021
-- Beta Date: in definition
+- Beta: in definition
 
 ## Progress
 
 <details>
     <summary>Start Project</summary>
-    <ol>
-        <li title="HTML structure and Basic styles css">Start interface project</li>
-        <li title="App data storage">Declaration of variables</li>
-    </ol>
+      | ID  | Name                     | Description                         |
+      | --- | ------------------------ | ----------------------------------- |
+      | 1   | Start interface project  | HTML structure and Basic styles css |
+      | 2   | Declaration of variables | App data storage                    |
+
+
 </details>
 
-<details>
-    <summary>Features</summary>
-    <ol>
-        <li title="App core idea">randomNumber</li>
-        <li title="Arrives the user's guess">checkGuess</li>
-        <li title="Disable fields and run resetGame">gameOver</li>
-        <li title="Start new game">resetGame</li>
-    </ol>
-</details>
+- Features
 
-ℹ - *Hovering the mouse over the progress points will open a view with details.*
+  | ID  | Name         | Description                      |
+  | --- | ------------ | -------------------------------- |
+  | 1   | randomNumber | App core idea                    |
+  | 2   | checkGuess   | Arrives the user's guess         |
+  | 3   | gameOver     | Disable fields and run resetGame |
+  | 4   | resetGame    | Start new game                   |
+
 #
-
