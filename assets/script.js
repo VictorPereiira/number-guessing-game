@@ -1,24 +1,30 @@
-let randomNumber = Math.floor(Math.random() * 100) + 1;
+let randomNumber = Math.floor(Math.random() * 100) + 1,
+    guessCount = 2,
+    userGuess = [],
+    resetButton;
 
-const guesses = document.querySelector(".guesses");
-const turn = document.querySelector(".guessCount")
-const lastResult = document.querySelector(".lastResult");
-const lowOrHi = document.querySelector(".lowOrHi");
+const guesses = document.querySelector(".guesses"),
+    turn = document.querySelector(".guessCount"),
+    lastResult = document.querySelector(".lastResult"),
+    lowOrHi = document.querySelector(".lowOrHi");
 
-const form = document.querySelector(".form");
-const guessField = document.querySelector(".guessField");
-const guessSubmit = document.querySelector(".guessSubmit");
+const form = document.querySelector(".form"),
+    guessField = document.querySelector(".guessField"),
+    guessSubmit = document.querySelector(".guessSubmit");
 
 const startButton = document.querySelector(".startButton");
 
-let guessCount = 2;
-let userGuess = [];
-let resetButton;
 
 function startGame() {
     startButton.parentNode.removeChild(startButton);
     form.style.display = 'block';
+    guessField.placeholder = 'Exp: 37'
+    guesses.textContent = 'Previous Guess: ';
+    turn.textContent = 'Turn: 3'
+    guessField.focus();
 }
+
+
 
 startButton.addEventListener('click', startGame)
 
@@ -35,59 +41,43 @@ function checkGuess() {
     let lastGuess = userGuess[userGuess.length - 1];
     console.log(userGuess);
 
-    if (guessCount === 2) {
-        guessField.placeholder = '';
-        guesses.textContent = 'Previous Guess: ';
-    }
-
     guesses.textContent += lastGuess + ' ';
     turn.textContent = 'Turn: ' + guessCount;
 
     if ((lastGuess >= 1) && (lastGuess <= 100)) {
         if ((guessCount <= 1) && (repeat)) {
-            guesses.textContent = '';
-            turn.textContent = '';
-            lastResult.textContent = 'The value must be different from the previous one.';
-            lastResult.style.backgroundColor = 'black';
-            lowOrHi.textContent = '';
-            gameOver();
+            action('The value must be different from the previous one.', 'black');
         } else if (lastGuess === randomNumber) {
-            lastResult.textContent = 'Congratulations! You got it right!';
-            lastResult.style.backgroundColor = 'green';
-            lowOrHi.textContent = '';
-            gameOver();
+            action('Congratulations! You got it right!', 'green');
         } else if (guessCount === 0) {
-            lastResult.textContent = 'GAME OVER!!!';
-            lastResult.style.backgroundColor = 'black';
-            lowOrHi.textContent = '';
-            gameOver();
+            action('GAME OVER!!!', 'black');
         } else {
             lastResult.textContent = 'Wrong!';
             lastResult.style.backgroundColor = 'red';
-            if (lastGuess > randomNumber) {
-                lowOrHi.textContent = 'Last guess was too high!';
-            }
-            if (lastGuess < randomNumber) {
-                lowOrHi.textContent = 'Last guess was too low!';
-            }
+
+            lastGuess > randomNumber ? lowOrHi.textContent = 'Last guess was too high!' : lastGuess;
+            lastGuess < randomNumber ? lowOrHi.textContent = 'Last guess was too low!' : lastGuess;
         }
 
         guessCount--;
         guessField.value = '';
         guessField.focus();
     } else {
-        guesses.textContent = '';
-        turn.textContent = '';
-        lastResult.textContent = 'The value entered must be between: 1 and 100.';
-        lastResult.style.backgroundColor = 'black';
-        lowOrHi.textContent = '';
-        gameOver();
+        action('The value entered must be between: 1 and 100.', 'black')
     }
 }
 
 guessSubmit.addEventListener('click', checkGuess);
 
+function action(text, color) {
+    lastResult.textContent = text;
+    lastResult.style.backgroundColor = color;
+    gameOver()
+}
+
 function gameOver() {
+    lowOrHi.textContent = '';
+    guessField.placeholder = '';
     guessField.disabled = true;
     guessSubmit.disabled = true;
     resetButton = document.createElement('button');
@@ -113,3 +103,4 @@ function resetGame() {
     randomNumber = Math.floor(Math.random() * 100) + 1;
     console.log(randomNumber);
 }
+
