@@ -10,13 +10,17 @@ body {
     justify-content: center;
     align-items: center; 
     height: 100vh;
-    /* background: #d4d4d4;  */
-    /* color: #fff;   */
 }
 
 .form{
     display: none;
 }
+
+.flex {
+    display: none;
+    justify-content: space-around;
+}
+
 
 main {
     padding: 45px;
@@ -26,7 +30,6 @@ main {
 main .p, form {
     margin: 10px 0;
 }
-
 
 button, .button {
     background: #627AFF;
@@ -57,7 +60,7 @@ button:hover {
     height: 43px;
 
     display: block;
-    margin: 20px auto;
+    margin-top: 20px;
 
     outline: none;
     background: none;
@@ -67,7 +70,8 @@ button:hover {
 
 
 .lastResult {
+    /* width: 25%; */
     color: #fff;
     padding: 5px;
-    margin: 10px 0;
+    margin: 10px auto;
 }

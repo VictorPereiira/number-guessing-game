@@ -8,31 +8,46 @@
     <title>Number Guessing Game</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
     <main>
         <h1>Number Guessing Game</h1>
         <p class="p">Discover a random number between 1 and 100. See if you can guess it in 3 turns</p>
         <button class="startButton">Start Game</button>
 
-        <p class="lastResult"></p>
-        <p class="lowOrHi"></p>
-
         <form class="form">
+            <p class="lastResult"></p>
             <input id="guessField" class="guessField" type="number" placeholder="Exp: 37" autocomplete="off"
                 maxlength="3">
             <input class="guessSubmit button" type="button" value="Submit Guess">
         </form>
 
-        <div class="resulPars">
-            <p class="guesses"></p>
-            <p class="guessCount"></p>
+
+        <div class="flex">
+            <div class="resulPars">
+                <h4>Statistics</h4>
+                <div class="flex-in">
+                    <p class="guesses"></p>
+                    <p class="guessCount"></p>
+                </div>
+            </div>
+            <div>
+                <h4 class="tips">Tips</h4>
+                <div class="flex-in">
+                    <p class="lowOrHi"></p>
+                </div>
+            </div>
+        </div>
+
         </div>
     </main>
 
-    <script src="assets/script.js"></script>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>

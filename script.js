@@ -3,6 +3,13 @@ let randomNumber = Math.floor(Math.random() * 100) + 1,
     userGuess = [],
     resetButton;
 
+let data = {
+    repeat: { text: 'The value must be different from the previous one.', color: 'black' },
+    win: { text: 'Congratulations! You got it right!', color: 'green' },
+    gameOver: { text: 'GAME OVER!!!', color: 'black' },
+    invalid: { text: 'The value entered must be between: 1 and 100!', color: 'black' }
+}
+
 const guesses = document.querySelector(".guesses"),
     turn = document.querySelector(".guessCount"),
     lastResult = document.querySelector(".lastResult"),
@@ -10,7 +17,8 @@ const guesses = document.querySelector(".guesses"),
 
 const form = document.querySelector(".form"),
     guessField = document.querySelector(".guessField"),
-    guessSubmit = document.querySelector(".guessSubmit");
+    guessSubmit = document.querySelector(".guessSubmit"),
+    flex = document.querySelector(".flex")
 
 const startButton = document.querySelector(".startButton");
 
@@ -18,13 +26,12 @@ const startButton = document.querySelector(".startButton");
 function startGame() {
     startButton.parentNode.removeChild(startButton);
     form.style.display = 'block';
+    flex.style.display = 'flex';
     guessField.placeholder = 'Exp: 37'
     guesses.textContent = 'Previous Guess: ';
     turn.textContent = 'Turn: 3'
     guessField.focus();
 }
-
-
 
 startButton.addEventListener('click', startGame)
 
@@ -45,12 +52,12 @@ function checkGuess() {
     turn.textContent = 'Turn: ' + guessCount;
 
     if ((lastGuess >= 1) && (lastGuess <= 100)) {
-        if ((guessCount <= 1) && (repeat)) {
-            action('The value must be different from the previous one.', 'black');
+        if (repeat) {
+            action(data.repeat);
         } else if (lastGuess === randomNumber) {
-            action('Congratulations! You got it right!', 'green');
+            action(data.win);
         } else if (guessCount === 0) {
-            action('GAME OVER!!!', 'black');
+            action(data.gameOver);
         } else {
             lastResult.textContent = 'Wrong!';
             lastResult.style.backgroundColor = 'red';
@@ -63,15 +70,16 @@ function checkGuess() {
         guessField.value = '';
         guessField.focus();
     } else {
-        action('The value entered must be between: 1 and 100.', 'black')
+        action(data.invalid)
     }
 }
 
 guessSubmit.addEventListener('click', checkGuess);
 
-function action(text, color) {
-    lastResult.textContent = text;
-    lastResult.style.backgroundColor = color;
+function action(obj) {
+    console.log(obj)
+    lastResult.textContent = obj.text;
+    lastResult.style.backgroundColor = obj.color;
     gameOver()
 }
 
@@ -90,8 +98,8 @@ function resetGame() {
     guessCount = 2;
     userGuess.splice(0, Number.MAX_VALUE);
     guessField.placeholder = 'Exp: 37';
-    guesses.textContent = '';
-    turn.textContent = '';
+    guesses.textContent = 'Previous Guess: ';
+    turn.textContent = 'Turn: 3';
     lastResult.textContent = '';
 
     resetButton.parentNode.removeChild(resetButton);

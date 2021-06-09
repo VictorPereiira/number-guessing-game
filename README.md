@@ -21,5 +21,7 @@
   | 2   | checkGuess   | Arrives the user's guess         |
   | 3   | gameOver     | Disable fields and run resetGame |
   | 4   | resetGame    | Start new game                   |
+  | 5   | startGame    | Build start configuration        |
+  | 6   | action       | Alerts in the game               |
 
 #
