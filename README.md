@@ -1,9 +1,9 @@
-<!--![Guessing-Game]()-->
-# Number Guessing Game
-> 🛠 Project in building...
+<h1 align = "center">Number Guessing Game</h1>
 
-- Beta: in definition
-
+<p align = "center"><img height = '400' src = "https://user-images.githubusercontent.com/64560823/121713845-a7e9b480-cab3-11eb-9d00-fd3307544c05.gif"><p>  
+  
+ > 🛠 Project in building... 
+  
 ## Progress
 
 - Start Project
