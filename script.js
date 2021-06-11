@@ -1,7 +1,7 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1,
     guessCount = 2,
-    userGuess = [],
-    resetButton;
+    userGuess = [];
+// resetButton;
 
 let data = {
     repeat: { text: 'The value must be different from the previous one.', color: 'black' },
@@ -20,20 +20,17 @@ const form = document.querySelector(".form"),
     guessSubmit = document.querySelector(".guessSubmit"),
     flex = document.querySelector(".flex")
 
-const startButton = document.querySelector(".startButton");
+const button = document.querySelector(".button"),
+    resetButton = document.querySelector(".resetButton");
 
 
 function startGame() {
-    startButton.parentNode.removeChild(startButton);
+    button.style.display = 'none';
     form.style.display = 'block';
-    flex.style.display = 'flex';
-    guessField.placeholder = 'Exp: 37'
-    guesses.textContent = 'Previous Guess: ';
-    turn.textContent = 'Turn: 3'
     guessField.focus();
 }
 
-startButton.addEventListener('click', startGame)
+button.addEventListener('click', startGame)
 
 function checkGuess() {
     userGuess.push(Number(guessField.value));
@@ -43,6 +40,11 @@ function checkGuess() {
         if (userGuessSorted[i + 1] == userGuessSorted[i]) {
             var repeat = true;
         }
+    }
+
+    if (guessCount === 2) {
+        flex.style.display = 'flex';
+        guesses.textContent = 'Guesses: '
     }
 
     let lastGuess = userGuess[userGuess.length - 1];
@@ -74,7 +76,8 @@ function checkGuess() {
     }
 }
 
-guessSubmit.addEventListener('click', checkGuess);
+guessSubmit.addEventListener('click', checkGuess)
+
 
 function action(obj) {
     console.log(obj)
@@ -84,27 +87,26 @@ function action(obj) {
 }
 
 function gameOver() {
-    lowOrHi.textContent = '';
     guessField.placeholder = '';
     guessField.disabled = true;
-    guessSubmit.disabled = true;
-    resetButton = document.createElement('button');
-    resetButton.textContent = 'Start new game';
-    document.body.appendChild(resetButton);
-    resetButton.addEventListener('click', resetGame)
+    guessSubmit.style.display = 'none';
+    flex.style.display = 'none';
+    button.style.display = 'block';
+    button.style.margin = '20px auto 0 auto';
+    button.textContent = 'Start new game';
+    button.addEventListener('click', resetGame)
 }
 
 function resetGame() {
     guessCount = 2;
     userGuess.splice(0, Number.MAX_VALUE);
     guessField.placeholder = 'Exp: 37';
-    guesses.textContent = 'Previous Guess: ';
-    turn.textContent = 'Turn: 3';
     lastResult.textContent = '';
 
-    resetButton.parentNode.removeChild(resetButton);
+    button.style.display = 'none';
     guessField.disabled = false;
-    guessSubmit.disabled = false;
+    guessSubmit.style.display = 'block';
+    guessSubmit.style.margin = '20px auto 0 auto';
     guessField.value = '';
     guessField.focus();
     lastResult.style.backgroundColor = 'white';

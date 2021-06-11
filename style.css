@@ -4,34 +4,25 @@
     box-sizing: border-box;
 }
 
-
 body {
     display: flex;
     justify-content: center;
     align-items: center; 
+
+    text-align: center;
     height: 100vh;
 }
 
-.form{
-    display: none;
-}
-
-.flex {
-    display: none;
-    justify-content: space-around;
-}
-
-
-main {
-    padding: 45px;
-    text-align: center;
-}
-
-main .p, form {
+body .p, form {
     margin: 10px 0;
 }
 
-button, .button {
+.form {
+    display: none;
+}
+
+
+button, .guessSubmit {
     background: #627AFF;
     width: 140px;
     height: 37px;
@@ -54,6 +45,14 @@ button:hover {
 }
 
 
+/* lastResult */
+.lastResult {
+    width: 520px;
+    color: #fff;
+    padding: 5px;
+    margin: 10px auto;
+}
+
 /* FORM */
 .guessField {
     width: 100%;
@@ -61,6 +60,7 @@ button:hover {
 
     display: block;
     margin-top: 20px;
+    padding: 10px;
 
     outline: none;
     background: none;
@@ -69,9 +69,16 @@ button:hover {
 }
 
 
-.lastResult {
-    /* width: 25%; */
-    color: #fff;
-    padding: 5px;
-    margin: 10px auto;
+/* Flex */
+.flex {
+    display: none;
+    justify-content: space-between;
+}
+
+h4 {
+    margin-bottom: 8px;   
+} 
+
+.flex p {
+    text-align: start;
 }

@@ -16,18 +16,18 @@
     <main>
         <h1>Number Guessing Game</h1>
         <p class="p">Discover a random number between 1 and 100. See if you can guess it in 3 turns</p>
-        <button class="startButton">Start Game</button>
 
         <form class="form">
             <p class="lastResult"></p>
             <input id="guessField" class="guessField" type="number" placeholder="Exp: 37" autocomplete="off"
                 maxlength="3">
-            <input class="guessSubmit button" type="button" value="Submit Guess">
+            <input class="guessSubmit" type="button" value="Submit Guess">
         </form>
 
+        <button class="button">Start Game</button>
 
         <div class="flex">
-            <div class="resulPars">
+            <div>
                 <h4>Statistics</h4>
                 <div class="flex-in">
                     <p class="guesses"></p>
@@ -41,11 +41,7 @@
                 </div>
             </div>
         </div>
-
-        </div>
     </main>
-
-
 
     <script src="script.js"></script>
 </body>
