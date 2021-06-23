@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,7 +10,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; 
+    background-color: #fbfbfb;
 
+    font-family: 'Roboto', sans-serif;
+    color: #505052;
     text-align: center;
     height: 100vh;
 }
@@ -49,17 +54,16 @@ button:hover {
 .lastResult {
     width: 520px;
     color: #fff;
-    padding: 5px;
-    margin: 10px auto;
+    margin: 20px auto 5px auto;
 }
 
 /* FORM */
 .guessField {
-    width: 100%;
-    height: 43px;
+    width: 400px;
+    height: 37px;
 
     display: block;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
     padding: 10px;
 
     outline: none;
@@ -69,16 +73,30 @@ button:hover {
 }
 
 
-/* Flex */
-.flex {
+/* statistics */
+.statistics {
+    height: 104px;
+    width: 228px;
+
+    margin:  30px auto 0 auto;
     display: none;
-    justify-content: space-between;
 }
 
-h4 {
-    margin-bottom: 8px;   
+h3 {
+    margin-bottom: 9px;   
 } 
 
-.flex p {
-    text-align: start;
+.stTable {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.stTable p {
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.stTable p:first-child {
+    border-bottom: 1px solid #D7D7D7;
 }

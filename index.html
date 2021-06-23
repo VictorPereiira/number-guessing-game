@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Guessing Game</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,6 +17,7 @@
 
         <form class="form">
             <p class="lastResult"></p>
+            <p class="lowOrHi"></p>
             <input id="guessField" class="guessField" type="number" placeholder="Exp: 37" autocomplete="off"
                 maxlength="3">
             <input class="guessSubmit" type="button" value="Submit Guess">
@@ -26,19 +25,11 @@
 
         <button class="button">Start Game</button>
 
-        <div class="flex">
-            <div>
-                <h4>Statistics</h4>
-                <div class="flex-in">
-                    <p class="guesses"></p>
-                    <p class="guessCount"></p>
-                </div>
-            </div>
-            <div>
-                <h4 class="tips">Tips</h4>
-                <div class="flex-in">
-                    <p class="lowOrHi"></p>
-                </div>
+        <div class="statistics">
+            <h3>Statistics</h3>
+            <div class="stTable">
+                <p class="guesses"></p>
+                <p class="guessCount"></p>
             </div>
         </div>
     </main>

@@ -18,7 +18,7 @@ const guesses = document.querySelector(".guesses"),
 const form = document.querySelector(".form"),
     guessField = document.querySelector(".guessField"),
     guessSubmit = document.querySelector(".guessSubmit"),
-    flex = document.querySelector(".flex")
+    statistics = document.querySelector(".statistics")
 
 const button = document.querySelector(".button"),
     resetButton = document.querySelector(".resetButton");
@@ -43,7 +43,7 @@ function checkGuess() {
     }
 
     if (guessCount === 2) {
-        flex.style.display = 'flex';
+        statistics.style.display = 'block';
         guesses.textContent = 'Guesses: '
     }
 
@@ -61,8 +61,8 @@ function checkGuess() {
         } else if (guessCount === 0) {
             action(data.gameOver);
         } else {
-            lastResult.textContent = 'Wrong!';
-            lastResult.style.backgroundColor = 'red';
+            lastResult.textContent = 'WRONG!';
+            lastResult.style.color = 'red'
 
             lastGuess > randomNumber ? lowOrHi.textContent = 'Last guess was too high!' : lastGuess;
             lastGuess < randomNumber ? lowOrHi.textContent = 'Last guess was too low!' : lastGuess;
@@ -82,15 +82,16 @@ guessSubmit.addEventListener('click', checkGuess)
 function action(obj) {
     console.log(obj)
     lastResult.textContent = obj.text;
-    lastResult.style.backgroundColor = obj.color;
+    lastResult.style.color = obj.color;
     gameOver()
 }
 
 function gameOver() {
+    lowOrHi.textContent = '';
     guessField.placeholder = '';
     guessField.disabled = true;
     guessSubmit.style.display = 'none';
-    flex.style.display = 'none';
+    statistics.style.display = 'none';
     button.style.display = 'block';
     button.style.margin = '20px auto 0 auto';
     button.textContent = 'Start new game';
