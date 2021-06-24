@@ -4,10 +4,10 @@ let randomNumber = Math.floor(Math.random() * 100) + 1,
 // resetButton;
 
 let data = {
-    repeat: { text: 'The value must be different from the previous one.', color: 'black' },
+    repeat: { text: 'The value must be different from the previous one.', color: '#797575' },
     win: { text: 'Congratulations! You got it right!', color: 'green' },
-    gameOver: { text: 'GAME OVER!!!', color: 'black' },
-    invalid: { text: 'The value entered must be between: 1 and 100!', color: 'black' }
+    gameOver: { text: 'GAME OVER!!!', color: '#797575' },
+    invalid: { text: 'The value entered must be between: 1 and 100!', color: '#797575' }
 }
 
 const guesses = document.querySelector(".guesses"),
@@ -48,7 +48,6 @@ function checkGuess() {
     }
 
     let lastGuess = userGuess[userGuess.length - 1];
-    console.log(userGuess);
 
     guesses.textContent += lastGuess + ' ';
     turn.textContent = 'Turn: ' + guessCount;
@@ -61,7 +60,7 @@ function checkGuess() {
         } else if (guessCount === 0) {
             action(data.gameOver);
         } else {
-            lastResult.textContent = 'WRONG!';
+            lastResult.textContent = 'Wrong!';
             lastResult.style.color = 'red'
 
             lastGuess > randomNumber ? lowOrHi.textContent = 'Last guess was too high!' : lastGuess;
@@ -112,6 +111,5 @@ function resetGame() {
     guessField.focus();
     lastResult.style.backgroundColor = 'white';
     randomNumber = Math.floor(Math.random() * 100) + 1;
-    console.log(randomNumber);
 }
 
