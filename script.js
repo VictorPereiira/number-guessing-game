@@ -75,7 +75,12 @@ function checkGuess() {
     }
 }
 
-guessSubmit.addEventListener('click', checkGuess)
+guessSubmit.addEventListener('click', checkGuess);
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    checkGuess()
+});
 
 
 function action(obj) {
